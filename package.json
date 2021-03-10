@@ -2,11 +2,11 @@
   "name": "testbed-hedwig",
   "version": "1.0.0",
   "description": "The test backend for Hedwig",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "scripts": {
     "start": "nodemon -w src --ext ts --exec ts-node src/index.ts",
-    "lint": "ts-standard --fix --verbose | snazzy",
-    "build": "tsc"
+    "lint": "ts-standard -p ./tsconfig.json --fix --verbose | snazzy",
+    "build": "rm -rf build && tsc"
   },
   "keywords": [],
   "author": "team.riceapps@gmail.com",

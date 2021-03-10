@@ -6,7 +6,7 @@ import { ApolloServer } from 'apollo-server-express'
 import { CatalogResolver } from './resolvers'
 import { buildSchema } from 'type-graphql'
 
-async function main () {
+async function main (): Promise<void> {
   const app = express()
   const schema = await buildSchema({
     resolvers: [CatalogResolver],
@@ -19,4 +19,4 @@ async function main () {
   app.listen({ port: 4000 }, () => console.log('Server ready'))
 }
 
-main()
+main().catch(() => console.log('Application exited!'))

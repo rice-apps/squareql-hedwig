@@ -8,7 +8,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // const ALLOWED_ORIGINS = process.env.ALLOWED_ORIGINS.split(',')
-const DEV_PORT = parseInt(process.env.DEV_PORT, 10)
+const DEV_PORT = parseInt(process.env.DEV_PORT as string, 10)
 const {
   MONGODB_URL,
   REDISHOST,
@@ -23,7 +23,7 @@ const {
   VAULT_KEYS,
   VAULT_ROOT_TOKEN
 } = process.env
-const REDISPORT = parseInt(process.env.REDISPORT, 10)
+const REDISPORT = parseInt(process.env.REDISPORT as string, 10)
 
 const MONGOOSE_CONFIG = {
   useNewUrlParser: true,
@@ -35,7 +35,7 @@ const MONGOOSE_CONFIG = {
 const REDIS_OPTIONS = {
   host: REDISHOST,
   port: REDISPORT,
-  retryStrategy: times => Math.min(times * 50, 2000)
+  retryStrategy: (times: number) => Math.min(times * 50, 2000)
 }
 
 export {

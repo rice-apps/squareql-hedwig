@@ -1,4 +1,4 @@
-import { ApiError, Client, Environment } from 'square'
+import { ApiError, Client, Environment, CatalogObject } from 'square'
 import { ApolloError } from 'apollo-server-express'
 
 class SquareService {
@@ -19,7 +19,7 @@ class SquareService {
     })
   }
 
-  async getCatalog () {
+  async getCatalog (): Promise<CatalogObject[] | undefined> {
     try {
       const {
         result: { objects }
@@ -38,6 +38,32 @@ class SquareService {
 
       throw new ApolloError(
         `Something went wrong getting Square catalog: ${JSON.stringify(error)}`
+      )
+    }
+  }
+
+  async getItems (itemIds: string[]): Promise<CatalogObject[] | undefined> {
+    try {
+      const {
+        result: { objects }
+      } = await this.squareClient.catalogApi.batchRetrieveCatalogObjects({
+        objectIds: itemIds
+      })
+
+      return objects
+    } catch (error) {
+      if (error instanceof ApiError) {
+        throw new ApolloError(
+          `Retrieving item ${JSON.stringify(
+            itemIds
+          )} from Square failed because ${JSON.stringify(error.result)}`
+        )
+      }
+
+      throw new ApolloError(
+        `Something went wrong when retrieving item ${JSON.stringify(
+          itemIds
+        )}: ${JSON.stringify(error)}`
       )
     }
   }

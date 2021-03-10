@@ -8,7 +8,7 @@ const squareServices = [
   )
 ]
 
-const getSquare = (vendorName: string) =>
+const getSquare = (vendorName: string): SquareService | undefined =>
   squareServices.find(service => service.vendorName === vendorName)
 
 export { getSquare }
