@@ -16,7 +16,7 @@ class CatalogResolver {
   @Query(() => [CatalogObject], { nullable: 'itemsAndList' })
   async items (
     @Arg('vendorName') vendorName: string,
-    @Arg('itemIds', () => [String]) itemIds: string[]
+      @Arg('itemIds', () => [String]) itemIds: string[]
   ): Promise<BaseCatalogObject[] | undefined> {
     return await getSquare(vendorName)?.getItems(itemIds)
   }

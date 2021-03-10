@@ -15,6 +15,7 @@
     "apollo-server-express": "^2.21.0",
     "dotenv": "^8.2.0",
     "graphql-bigint": "^1.0.0",
+    "node-vault": "^0.9.21",
     "reflect-metadata": "^0.1.13",
     "square": "^9.0.0",
     "type-graphql": "^1.1.1"
