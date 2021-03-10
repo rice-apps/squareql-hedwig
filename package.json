@@ -1,6 +1,6 @@
 {
-  "name": "testbed-hedwig",
-  "version": "1.0.0",
+  "name": "squareql-hedwig",
+  "version": "0.1.0-alpha",
   "description": "The test backend for Hedwig",
   "main": "src/index.ts",
   "scripts": {
