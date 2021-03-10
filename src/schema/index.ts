@@ -1,0 +1,1 @@
+export { CatalogObject } from './catalogObject'

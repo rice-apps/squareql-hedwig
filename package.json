@@ -1,0 +1,30 @@
+{
+  "name": "testbed-hedwig",
+  "version": "1.0.0",
+  "description": "The test backend for Hedwig",
+  "main": "index.ts",
+  "scripts": {
+    "start": "nodemon -w src --ext ts --exec ts-node src/index.ts",
+    "lint": "ts-standard --fix --verbose | snazzy",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "team.riceapps@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server-express": "^2.21.0",
+    "dotenv": "^8.2.0",
+    "graphql-bigint": "^1.0.0",
+    "reflect-metadata": "^0.1.13",
+    "square": "^9.0.0",
+    "type-graphql": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/graphql-bigint": "^1.0.0",
+    "nodemon": "^2.0.7",
+    "snazzy": "^9.0.0",
+    "ts-node": "^9.1.1",
+    "ts-standard": "^10.0.0",
+    "typescript": "^4.2.3"
+  }
+}
