@@ -22,6 +22,7 @@ vendorList.forEach(async vendor => {
   )
 })
 
-const getSquare = (vendorName: string) => squareClients.get(vendorName)
+const getSquare = (vendorName: string): SquareService | undefined =>
+  squareClients.get(vendorName)
 
 export { getSquare }

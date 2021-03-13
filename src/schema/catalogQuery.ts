@@ -76,6 +76,8 @@ export class CatalogQuery {
   itemsForItemOptionsQuery?: CatalogQueryItemsForItemOptions
 
   /** The query filter to return the item variations containing the specified item option value IDs. */
-  @Field(() => CatalogQueryItemVariationsForItemOptionValues, { nullable: true })
+  @Field(() => CatalogQueryItemVariationsForItemOptionValues, {
+    nullable: true
+  })
   itemVariationsForItemOptionValuesQuery?: CatalogQueryItemVariationsForItemOptionValues
 }

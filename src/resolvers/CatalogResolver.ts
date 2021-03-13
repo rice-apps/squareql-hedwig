@@ -1,25 +1,42 @@
 import { Arg, Query, Resolver } from 'type-graphql'
-import { CatalogObject as BaseCatalogObject } from 'square'
+import {
+  BatchRetrieveCatalogObjectsResponse as BaseBatchRetrieveCatalogObjectResponse,
+  ListCatalogResponse as BaseListCatalogResponse
+} from 'square'
 
-import { CatalogObject } from '../schema'
+import {
+  BatchRetrieveCatalogObjectsResponse,
+  ListCatalogResponse
+} from '../schema'
 import { getSquare } from '../utils/square'
+import { ApolloError } from 'apollo-server-express'
 
-@Resolver(CatalogObject)
-class CatalogResolver {
-  @Query(() => [CatalogObject], { nullable: 'itemsAndList' })
+@Resolver()
+export class CatalogResolver {
+  @Query(() => ListCatalogResponse)
   async catalog (
     @Arg('vendorName') vendorName: string
-  ): Promise<BaseCatalogObject[] | undefined> {
-    return await getSquare(vendorName)?.getCatalog()
+  ): Promise<BaseListCatalogResponse> {
+    const squareService = getSquare(vendorName)
+
+    if (typeof squareService === 'undefined') {
+      throw new ApolloError(`Vendor ${vendorName} doesn't exist`)
+    }
+
+    return await squareService.getCatalog()
   }
 
-  @Query(() => [CatalogObject], { nullable: 'itemsAndList' })
+  @Query(() => BatchRetrieveCatalogObjectsResponse)
   async items (
     @Arg('vendorName') vendorName: string,
       @Arg('itemIds', () => [String]) itemIds: string[]
-  ): Promise<BaseCatalogObject[] | undefined> {
-    return await getSquare(vendorName)?.getItems(itemIds)
+  ): Promise<BaseBatchRetrieveCatalogObjectResponse> {
+    const squareService = getSquare(vendorName)
+
+    if (typeof squareService === 'undefined') {
+      throw new ApolloError(`Vendor ${vendorName} doesn't exist`)
+    }
+
+    return squareService.getItems(itemIds)
   }
 }
-
-export { CatalogResolver }

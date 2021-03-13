@@ -3,13 +3,13 @@ import './config'
 import express from 'express'
 import { ApolloServer } from 'apollo-server-express'
 
-import { CatalogResolver } from './resolvers'
+import { CatalogResolver, OrderResolver } from './resolvers'
 import { buildSchema } from 'type-graphql'
 
 async function main (): Promise<void> {
   const app = express()
   const schema = await buildSchema({
-    resolvers: [CatalogResolver],
+    resolvers: [CatalogResolver, OrderResolver],
     emitSchemaFile: true
   })
   const server = new ApolloServer({ schema })
@@ -19,4 +19,7 @@ async function main (): Promise<void> {
   app.listen({ port: 4000 }, () => console.log('Server ready'))
 }
 
-main().catch(() => console.log('Application exited!'))
+main().catch(error => {
+  console.log(JSON.stringify(error))
+  console.log('Application exited!')
+})

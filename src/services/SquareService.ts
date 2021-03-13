@@ -1,5 +1,12 @@
-import { ApiError, Client, Environment, CatalogObject } from 'square'
+import {
+  ApiError,
+  Client,
+  Environment,
+  ListCatalogResponse,
+  BatchRetrieveCatalogObjectsResponse
+} from 'square'
 import { ApolloError } from 'apollo-server-express'
+import { SearchOrdersRequest, SearchOrdersResponse } from '../schema'
 
 class SquareService {
   vendorName: string
@@ -19,16 +26,14 @@ class SquareService {
     })
   }
 
-  async getCatalog (): Promise<CatalogObject[] | undefined> {
+  async getCatalog (): Promise<ListCatalogResponse> {
     try {
-      const {
-        result: { objects }
-      } = await this.squareClient.catalogApi.listCatalog(
+      const { result } = await this.squareClient.catalogApi.listCatalog(
         undefined,
         'ITEM,CATEGORY,MODIFIER_LIST'
       )
 
-      return objects
+      return result
     } catch (error) {
       if (error instanceof ApiError) {
         throw new ApolloError(
@@ -42,15 +47,17 @@ class SquareService {
     }
   }
 
-  async getItems (itemIds: string[]): Promise<CatalogObject[] | undefined> {
+  async getItems (
+    itemIds: string[]
+  ): Promise<BatchRetrieveCatalogObjectsResponse> {
     try {
       const {
-        result: { objects }
+        result
       } = await this.squareClient.catalogApi.batchRetrieveCatalogObjects({
         objectIds: itemIds
       })
 
-      return objects
+      return result
     } catch (error) {
       if (error instanceof ApiError) {
         throw new ApolloError(
@@ -64,6 +71,28 @@ class SquareService {
         `Something went wrong when retrieving item ${JSON.stringify(
           itemIds
         )}: ${JSON.stringify(error)}`
+      )
+    }
+  }
+
+  async getOrders (
+    request: SearchOrdersRequest
+  ): Promise<SearchOrdersResponse> {
+    try {
+      const { result } = await this.squareClient.ordersApi.searchOrders(request)
+
+      return result
+    } catch (error) {
+      if (error instanceof ApiError) {
+        throw new ApolloError(
+          `Finding orders using Square failed because ${JSON.stringify(
+            error.result
+          )}`
+        )
+      }
+
+      throw new ApolloError(
+        `Something went wrong finding orders: ${JSON.stringify(error)}`
       )
     }
   }

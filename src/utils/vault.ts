@@ -9,6 +9,6 @@ const vault = NodeVault({
 
 const keys = (VAULT_KEYS as string).split(';')
 
-keys.forEach(key => vault.unseal({ key: key }))
+keys.forEach(async key => await vault.unseal({ key: key }))
 
 export default vault
