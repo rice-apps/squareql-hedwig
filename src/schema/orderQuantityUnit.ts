@@ -1,4 +1,4 @@
-import { Field, Int, ObjectType } from 'type-graphql'
+import { Field, InputType, Int, ObjectType } from 'type-graphql'
 
 import { MeasurementUnit } from './measurementUnit'
 
@@ -7,6 +7,7 @@ import { MeasurementUnit } from './measurementUnit'
  * specifies the number of digits after the decimal point for decimal quantities.
  */
 @ObjectType()
+@InputType('OrderQuantityUnitInput')
 export class OrderQuantityUnit {
   /**
    * Represents a unit of measurement to use with a quantity, such as ounces

@@ -1,8 +1,9 @@
-import { Field, ObjectType } from 'type-graphql'
+import { Field, InputType, ObjectType } from 'type-graphql'
 import { Money } from './money'
 
 /** A collection of various money amounts. */
 @ObjectType()
+@InputType('OrderMoneyAmountsInput')
 export class OrderMoneyAmounts {
   /**
    * Represents an amount of money. `Money` fields can be signed or unsigned.

@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType } from 'type-graphql'
+import { Field, ID, InputType, ObjectType } from 'type-graphql'
 
 import { OrderMoneyAmounts } from './orderMoneyAmounts'
 import { OrderReturnDiscount } from './orderReturnDiscount'
@@ -9,6 +9,7 @@ import { OrderRoundingAdjustment } from './orderRoundingAdjustment'
 
 /** The set of line items, service charges, taxes, discounts, tips, etc. being returned in an Order. */
 @ObjectType()
+@InputType('OrderReturnInput')
 export class OrderReturn {
   /** Unique ID that identifies the return only within this order. */
   @Field(() => ID, { nullable: true })

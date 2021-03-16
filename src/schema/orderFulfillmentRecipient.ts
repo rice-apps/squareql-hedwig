@@ -1,8 +1,9 @@
-import { Field, ID, ObjectType } from 'type-graphql'
+import { Field, ID, InputType, ObjectType } from 'type-graphql'
 import { Address } from './address'
 
 /** Contains information on the recipient of a fulfillment. */
 @ObjectType()
+@InputType('OrderFulfillmentRecipientInput')
 export class OrderFulfillmentRecipient {
   /**
    * The Customer ID of the customer associated with the fulfillment.

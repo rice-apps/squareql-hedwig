@@ -1,9 +1,10 @@
-import { Field, ID, ObjectType } from 'type-graphql'
+import { Field, ID, InputType, ObjectType } from 'type-graphql'
 import { Money } from './money'
 import { OrderLineItemAppliedTax } from './orderLineItemAppliedTax'
 
 /** Represents a service charge applied to an order. */
 @ObjectType()
+@InputType('OrderServiceChargeInput')
 export class OrderServiceCharge {
   /** Unique ID that identifies the service charge only within this order. */
   @Field(() => ID, { nullable: true })

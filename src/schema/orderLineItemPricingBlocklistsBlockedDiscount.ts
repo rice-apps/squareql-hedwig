@@ -1,10 +1,11 @@
-import { Field, ID, ObjectType } from 'type-graphql'
+import { Field, ID, InputType, ObjectType } from 'type-graphql'
 
 /**
  * A discount to block from applying to a line item. The discount must be
  * identified by either `discount_uid` or `discount_catalog_object_id`, but not both.
  */
 @ObjectType()
+@InputType('OrderLineItemPricingBlocklistsBlockedDiscountInput')
 export class OrderLineItemPricingBlocklistsBlockedDiscount {
   /** Unique ID of the `BlockedDiscount` within the order. */
   @Field(() => ID, { nullable: true })

@@ -1,8 +1,9 @@
-import { Field, ID, ObjectType } from 'type-graphql'
+import { Field, ID, InputType, ObjectType } from 'type-graphql'
 import { Money } from './money'
 
 /** Represents an additional recipient (other than the merchant) receiving a portion of this tender. */
 @ObjectType()
+@InputType('AdditionalRecipientInput')
 export class AdditionalRecipient {
   /** The location ID for a recipient (other than the merchant) receiving a portion of this tender. */
   @Field(() => ID, { nullable: true })

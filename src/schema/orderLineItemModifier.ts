@@ -1,9 +1,10 @@
-import { Field, ID, ObjectType } from 'type-graphql'
+import { Field, ID, InputType, ObjectType } from 'type-graphql'
 
 import { Money } from './money'
 
 /** A [CatalogModifier](#type-catalogmodifier). */
 @ObjectType()
+@InputType('OrderLineItemModifierInput')
 export class OrderLineItemModifier {
   /** Unique ID that identifies the modifier only within this order. */
   @Field(() => ID, { nullable: true })

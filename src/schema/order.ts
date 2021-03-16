@@ -1,4 +1,4 @@
-import { Field, ID, Int, ObjectType } from 'type-graphql'
+import { Field, ID, InputType, Int, ObjectType } from 'type-graphql'
 
 import { Money } from './money'
 import { OrderFulfillment } from './orderFulfillment'
@@ -23,6 +23,7 @@ import { Tender } from './tender'
  * itemization data.
  */
 @ObjectType()
+@InputType('OrderInput')
 export class Order {
   /** The order's unique ID. */
   @Field(() => ID, { nullable: true })

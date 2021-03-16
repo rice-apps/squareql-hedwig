@@ -1,10 +1,11 @@
-import { Field, ID, ObjectType } from 'type-graphql'
+import { Field, ID, InputType, ObjectType } from 'type-graphql'
 
 /**
  * A tax to block from applying to a line item. The tax must be
  * identified by either `tax_uid` or `tax_catalog_object_id`, but not both.
  */
 @ObjectType()
+@InputType('OrderLineItemPricingBlocklistsBlockedTaxInput')
 export class OrderLineItemPricingBlocklistsBlockedTax {
   /** Unique ID of the `BlockedTax` within the order. */
   @Field(() => ID, { nullable: true })

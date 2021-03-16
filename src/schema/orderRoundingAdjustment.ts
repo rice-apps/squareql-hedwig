@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType } from 'type-graphql'
+import { Field, ID, InputType, ObjectType } from 'type-graphql'
 import { Money } from './money'
 
 /**
@@ -6,6 +6,7 @@ import { Money } from './money'
  * when the minimum unit of account is smaller than the lowest physical denomination of currency.
  */
 @ObjectType()
+@InputType('OrderRoundingAdjustmentInput')
 export class OrderRoundingAdjustment {
   /** Unique ID that identifies the rounding adjustment only within this order. */
   @Field(() => ID, { nullable: true })

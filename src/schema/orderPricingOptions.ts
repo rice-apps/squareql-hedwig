@@ -1,4 +1,4 @@
-import { Field, ObjectType } from 'type-graphql'
+import { Field, InputType, ObjectType } from 'type-graphql'
 
 /**
  * Pricing options for an order. The options affect how the order's price is calculated.
@@ -6,6 +6,7 @@ import { Field, ObjectType } from 'type-graphql'
  * [pricing rules](https://developer.squareup.com/docs/reference/square/objects/CatalogPricingRule).
  */
 @ObjectType()
+@InputType('OrderPricingOptionsInput')
 export class OrderPricingOptions {
   /**
    * The option to determine whether pricing rule-based

@@ -1,8 +1,9 @@
-import { Field, ID, ObjectType } from 'type-graphql'
+import { Field, ID, InputType, ObjectType } from 'type-graphql'
 import { Money } from './money'
 
 /** A line item modifier being returned. */
 @ObjectType()
+@InputType('OrderReturnLineItemModifierInput')
 export class OrderReturnLineItemModifier {
   /** Unique ID that identifies the return modifier only within this order. */
   @Field(() => ID, { nullable: true })

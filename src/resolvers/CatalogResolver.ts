@@ -1,4 +1,4 @@
-import { Arg, Query, Resolver } from 'type-graphql'
+import { Arg, Args, Query, Resolver } from 'type-graphql'
 import {
   BatchRetrieveCatalogObjectsResponse as BaseBatchRetrieveCatalogObjectResponse,
   ListCatalogResponse as BaseListCatalogResponse
@@ -6,7 +6,8 @@ import {
 
 import {
   BatchRetrieveCatalogObjectsResponse,
-  ListCatalogResponse
+  ListCatalogResponse,
+  ListCatalogArgs
 } from '../schema'
 import { getSquare } from '../utils/square'
 import { ApolloError } from 'apollo-server-express'
@@ -15,7 +16,8 @@ import { ApolloError } from 'apollo-server-express'
 export class CatalogResolver {
   @Query(() => ListCatalogResponse)
   async catalog (
-    @Arg('vendorName') vendorName: string
+    @Arg('vendorName') vendorName: string,
+      @Args() { cursor, types, catalogVersion }: ListCatalogArgs
   ): Promise<BaseListCatalogResponse> {
     const squareService = getSquare(vendorName)
 
@@ -23,7 +25,7 @@ export class CatalogResolver {
       throw new ApolloError(`Vendor ${vendorName} doesn't exist`)
     }
 
-    return await squareService.getCatalog()
+    return await squareService.getCatalog(cursor, types, catalogVersion)
   }
 
   @Query(() => BatchRetrieveCatalogObjectsResponse)

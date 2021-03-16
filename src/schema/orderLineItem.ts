@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType } from 'type-graphql'
+import { Field, ID, InputType, ObjectType } from 'type-graphql'
 import { Money } from './money'
 import { OrderLineItemAppliedDiscount } from './orderLineItemAppliedDiscount'
 import { OrderLineItemAppliedTax } from './orderLineItemAppliedTax'
@@ -11,6 +11,7 @@ import { OrderQuantityUnit } from './orderQuantityUnit'
  * product to purchase, with its own quantity and price details.
  */
 @ObjectType()
+@InputType('OrderLineItemInput')
 export class OrderLineItem {
   /** Unique ID that identifies the line item only within this order. */
   @Field(() => ID, { nullable: true })

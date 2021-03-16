@@ -1,9 +1,10 @@
-import { Field, ObjectType } from 'type-graphql'
+import { Field, InputType, ObjectType } from 'type-graphql'
 import { OrderFulfillmentPickupDetailsCurbsidePickupDetails } from './orderFulfillmentPickupDetailsCurbsidePickupDetails'
 import { OrderFulfillmentRecipient } from './orderFulfillmentRecipient'
 
 /** Contains details necessary to fulfill a pickup order. */
 @ObjectType()
+@InputType('OrderFulfillmentPickupDetailsInput')
 export class OrderFulfillmentPickupDetails {
   /** Contains information on the recipient of a fulfillment. */
   @Field(() => OrderFulfillmentRecipient, { nullable: true })

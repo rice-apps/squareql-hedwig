@@ -1,7 +1,8 @@
-import { Field, ObjectType } from 'type-graphql'
+import { Field, InputType, ObjectType } from 'type-graphql'
 
 /** Represents the origination details of an order. */
 @ObjectType()
+@InputType('OrderSourceInput')
 export class OrderSource {
   /**
    * The name used to identify the place (physical or digital) that an order originates.

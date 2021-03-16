@@ -1,7 +1,8 @@
-import { Field, ObjectType } from 'type-graphql'
+import { Field, InputType, ObjectType } from 'type-graphql'
 
 /** Specific details for curbside pickup. */
 @ObjectType()
+@InputType('OrderFulfillmentPickupDetailsCurbsidePickupDetailsInput')
 export class OrderFulfillmentPickupDetailsCurbsidePickupDetails {
   /** Specific details for curbside pickup, such as parking number, vehicle model, etc. */
   @Field({ nullable: true })

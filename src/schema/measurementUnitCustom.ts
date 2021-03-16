@@ -1,7 +1,8 @@
-import { Field, ObjectType } from 'type-graphql'
+import { Field, InputType, ObjectType } from 'type-graphql'
 
 /** The information needed to define a custom unit, provided by the seller. */
 @ObjectType()
+@InputType('MeasurementUnitCustomInput')
 export class MeasurementUnitCustom {
   /** The name of the custom unit, for example "bushel". */
   @Field()

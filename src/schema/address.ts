@@ -1,7 +1,8 @@
-import { Field, ObjectType } from 'type-graphql'
+import { Field, InputType, ObjectType } from 'type-graphql'
 
 /** Represents a physical address. */
 @ObjectType()
+@InputType('AddressInput')
 export class Address {
   /**
    * The first line of the address.

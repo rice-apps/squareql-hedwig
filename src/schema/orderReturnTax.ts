@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType } from 'type-graphql'
+import { Field, ID, InputType, ObjectType } from 'type-graphql'
 import { Money } from './money'
 
 /**
@@ -8,6 +8,7 @@ import { Money } from './money'
  * order subtotal.
  */
 @ObjectType()
+@InputType('OrderReturnTaxInput')
 export class OrderReturnTax {
   /** Unique ID that identifies the return tax only within this order. */
   @Field(() => ID, { nullable: true })

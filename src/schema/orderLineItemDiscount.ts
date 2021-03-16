@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType } from 'type-graphql'
+import { Field, ID, InputType, ObjectType } from 'type-graphql'
 
 import { Money } from './money'
 
@@ -10,6 +10,7 @@ import { Money } from './money'
  * amount contributed by the item to the order subtotal.
  */
 @ObjectType()
+@InputType('OrderLineItemDiscountInput')
 export class OrderLineItemDiscount {
   /** Unique ID that identifies the discount only within this order. */
   @Field(() => ID, { nullable: true })

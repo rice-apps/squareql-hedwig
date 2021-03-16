@@ -1,4 +1,4 @@
-import { Field, ObjectType } from 'type-graphql'
+import { Field, InputType, ObjectType } from 'type-graphql'
 
 import { OrderLineItemPricingBlocklistsBlockedDiscount } from './orderLineItemPricingBlocklistsBlockedDiscount'
 import { OrderLineItemPricingBlocklistsBlockedTax } from './orderLineItemPricingBlocklistsBlockedTax'
@@ -9,6 +9,7 @@ import { OrderLineItemPricingBlocklistsBlockedTax } from './orderLineItemPricing
  * [Apply Taxes and Discounts](https://developer.squareup.com/docs/orders-api/apply-taxes-and-discounts).
  */
 @ObjectType()
+@InputType('OrderLineItemPricingBlocklistsInput')
 export class OrderLineItemPricingBlocklists {
   /**
    * A list of discounts blocked from applying to the line item.

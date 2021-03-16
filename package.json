@@ -6,6 +6,7 @@
   "scripts": {
     "start": "nodemon -w src --ext ts --exec ts-node src/index.ts",
     "lint": "ts-standard -p ./tsconfig.json --fix --verbose | snazzy",
+    "lint:other": "prettier-standard --format 'src/**/*.{js, ts}' && prettier-standard --lint 'src/**/*.{js, ts}'",
     "build": "rm -rf build && tsc"
   },
   "keywords": [],
@@ -23,6 +24,7 @@
   "devDependencies": {
     "@types/graphql-bigint": "^1.0.0",
     "nodemon": "^2.0.7",
+    "prettier-standard": "^16.4.1",
     "snazzy": "^9.0.0",
     "ts-node": "^9.1.1",
     "ts-standard": "^10.0.0",

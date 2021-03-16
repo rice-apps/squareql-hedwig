@@ -1,9 +1,10 @@
-import { Field, ID, ObjectType } from 'type-graphql'
+import { Field, ID, InputType, ObjectType } from 'type-graphql'
 import { AdditionalRecipient } from './additionalRecipient'
 import { Money } from './money'
 
 /** Represents a refund processed for a Square transaction. */
 @ObjectType()
+@InputType('RefundInput')
 export class Refund {
   /** The refund's unique ID. */
   @Field(() => ID)

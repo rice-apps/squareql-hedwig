@@ -1,8 +1,9 @@
-import { Field, ObjectType } from 'type-graphql'
+import { Field, InputType, ObjectType } from 'type-graphql'
 import { Card } from './card'
 
 /** Represents additional details of a tender with `type` `CARD` or `SQUARE_GIFT_CARD` */
 @ObjectType()
+@InputType('TenderCardDetailsInput')
 export class TenderCardDetails {
   /** Indicates the card transaction's current status. */
   @Field({ nullable: true })

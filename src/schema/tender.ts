@@ -1,4 +1,4 @@
-import { Field, ID, ObjectType } from 'type-graphql'
+import { Field, ID, InputType, ObjectType } from 'type-graphql'
 import { AdditionalRecipient } from './additionalRecipient'
 import { Money } from './money'
 import { TenderCardDetails } from './tenderCardDetails'
@@ -6,6 +6,7 @@ import { TenderCashDetails } from './tenderCashDetails'
 
 /** Represents a tender (i.e., a method of payment) used in a Square transaction. */
 @ObjectType()
+@InputType('TenderInput')
 export class Tender {
   /** The tender's unique ID. */
   @Field(() => ID, { nullable: true })

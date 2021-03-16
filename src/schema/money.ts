@@ -1,4 +1,4 @@
-import { Field, ObjectType } from 'type-graphql'
+import { Field, InputType, ObjectType } from 'type-graphql'
 import BigInt from 'graphql-bigint'
 
 /**
@@ -10,6 +10,7 @@ import BigInt from 'graphql-bigint'
  * for more information.
  */
 @ObjectType()
+@InputType('MoneyInput')
 export class Money {
   /**
    * The amount of money, in the smallest denomination of the currency
