@@ -13,12 +13,12 @@
   "author": "team.riceapps@gmail.com",
   "license": "MIT",
   "dependencies": {
-    "apollo-server-express": "^2.21.1",
+    "apollo-server-express": "^2.21.2",
     "dotenv": "^8.2.0",
     "graphql-bigint": "^1.0.0",
     "node-vault": "^0.9.21",
     "reflect-metadata": "^0.1.13",
-    "square": "^9.0.0",
+    "square": "^9.1.0",
     "type-graphql": "^1.1.1"
   },
   "devDependencies": {
